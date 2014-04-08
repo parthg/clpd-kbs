@@ -14,6 +14,7 @@ import java.util.List;
 public class AnalyseRecall {
 	public static void main(String[] args) throws IOException {
 		
+		// Give the generated output file from MonoTFIDFExptA or CLCNGExptA
 		String inFile = "output/mono_exptA.txt";
 		BufferedReader br = new BufferedReader(new FileReader(inFile));
 		

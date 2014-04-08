@@ -14,15 +14,23 @@ import java.util.Map;
 
 import es.upv.nlel.preprocess.Preprocess;
 
+/** This class converts the source text files or in general files 
+ * into character n-grams format.
+ * 
+ * @author Parth Gupta
+ *
+ */
 public class PrepareCollectionExptA {
 	public static void main(String[] args) throws IOException, ClassNotFoundException {
 		String lang = "es";
 		
+		int n = 4;
+		
 		Preprocess pre = new Preprocess(lang);
-		File sourceDir = new File("/home/parth/workspace/data/CLCorpus/pan-cl-cases/es/");
+		File sourceDir = new File("path-to/clpd-data/ExptA/es/");
 		File[] files = sourceDir.listFiles();
 		
-		String outDir = "/home/parth/workspace/data/CLCorpus/cng-source/";
+		String outDir = "output/cng-source/";
 		
 		for(File f: files) {
 			BufferedReader br1 = new BufferedReader(new InputStreamReader(new FileInputStream(f),"UTF-8"));
@@ -44,7 +52,7 @@ public class PrepareCollectionExptA {
     		br1.close();
     		
     		System.out.println("Processing:\t"+ f.getName());
-    		String nGrams = pre.makeNGramText(source.toString(), 4);
+    		String nGrams = pre.makeNGramText(source.toString(), n);
     		
     		FileOutputStream fos = new FileOutputStream(outDir+f.getName());
     		PrintStream p = new PrintStream(fos);
