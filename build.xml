@@ -1,4 +1,4 @@
-<project name="clpd" basedir=".">
+<project name="clpd-kbs" basedir=".">
     <description>
         simple example build file
     </description>
@@ -18,7 +18,7 @@
   <target name="compile" depends="init"
         description="compile the source " >
     <!-- Compile the java code from ${src} into ${build} -->
-    <javac srcdir="${src}" destdir="${bin}" classpath="lib/antlr.jar:lib/terrier-3.5-core.jar:lib/trove-3.0.1.jar:lib/icu4j-4_6.jar:lib/nlel-20130326.jar:lib/Nemo-20130430.jar"/>
+    <javac srcdir="${src}" destdir="${bin}" classpath="lib/antlr.jar:lib/terrier-3.5-core.jar:lib/trove-3.0.1.jar:lib/icu4j-4_6.jar:lib/nlel-20130326.jar:lib/Nemo-20140409.jar"/>
   </target>
 
   <target name="dist" depends="compile"
@@ -27,7 +27,7 @@
     <mkdir dir="${dist}"/>
 
     <!-- Put everything in ${build} into the MyProject-${DSTAMP}.jar file -->
-    <jar jarfile="${dist}/clpd-${DSTAMP}.jar" basedir="${bin}"/>
+    <jar jarfile="${dist}/clpd-kbs-${DSTAMP}.jar" basedir="${bin}"/>
   </target>
 
   <target name="clean"
