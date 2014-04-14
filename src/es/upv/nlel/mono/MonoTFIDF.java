@@ -67,7 +67,7 @@ public class MonoTFIDF {
 		if(!new File("/home/parth/workspace/terrier-3.5/var/index/pan11/esmono.docid.map").exists())
 			mono.terrier.prepareIndex("/home/parth/workspace/data/clpd-kbs/soParaMono/", "txt", "en", true, true);
 		
-		mono.terrier.loadIndex("/home/parth/workspace/terrier-3.5/var/index/pan11/", "esmono");
+		mono.terrier.loadIndex("/home/parth/workspace/terrier-3.5/var/index/pan11/", "esmono", "es");
 		
 		System.out.println(mono.terrier.getDimension());
 		
@@ -179,7 +179,7 @@ public class MonoTFIDF {
 			String query = this.terrier.getQuery(new File(su));
 			
 			try {
-				ResultSet rs = this.terrier.getResultSet(query, "TF_IDF", "false", "en", true, true);
+				ResultSet rs = this.terrier.getResultSet(query, "TF_IDF", false, 0);
 				Map<Integer, Double> scoreMap = new HashMap<Integer, Double>();
 				
 				/*String[] q = query.split(" ");

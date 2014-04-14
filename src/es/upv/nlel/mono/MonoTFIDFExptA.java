@@ -49,7 +49,7 @@ public class MonoTFIDFExptA {
 			System.out.println("Done!");
 		}
 		
-		mono.terrier.loadIndex("/home/parth/workspace/terrier-3.5/var/index/pan11-expta/", prefix);
+		mono.terrier.loadIndex("/home/parth/workspace/terrier-3.5/var/index/pan11-expta/", prefix, lang);
 		
 		System.out.println(mono.terrier.getDimension());
 
@@ -106,7 +106,7 @@ public class MonoTFIDFExptA {
 	public void calculateSimilarity(String suName, String text) throws RecognitionException, TokenStreamException, IOException {
 		String query = this.terrier.tokenizeTerrier(text);
 		
-		ResultSet rs = this.terrier.getResultSet(query, "TF_IDF", "false", "en", true, true);
+		ResultSet rs = this.terrier.getResultSet(query, "TF_IDF", false, 0);
 		Map<Integer, Double> scoreMap = new HashMap<Integer, Double>();
 		
 		int[] docid = rs.getDocids();

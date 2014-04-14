@@ -36,21 +36,26 @@ public class CLCNGExptA {
 		// The source file containing n-grams of the text generated from PrepareCollectionExptA.java
 		String soDir = "output/cng-source/";
 		String suDir = "path-to/clpd-data/ExptA/en/";
-		cng.terrier = new TerrierWrapper("<path-to-your-terrier-3.5>");
 		
-		cng.terrier.setIndex("/home/parth/workspace/terrier-3.5/var/index/pan11-expta/", "es");
+		cng.terrier = new TerrierWrapper("/home/parth/workspace/terrier-3.5");
 		
-		if(!new File("<path-to-your-terrier-3.5>/var/index/pan11-expta/es.docid.map").exists()) {
+		System.out.println("Path to Terrier: " + cng.terrier.getPathToTerrier());
+		
+		String indexPrefix = "es";
+		String lang = "es";
+		String path_to_index = "/home/parth/workspace/terrier-3.5/var/index/pan11-expta/";
+		cng.terrier.setIndex(path_to_index, indexPrefix);
+		
+		if(!new File("<path-to-your-terrier-3.5>/var/index/pan11-expta/"+indexPrefix+".docid.map").exists()) {
 			System.out.print("Indexing...");
-			cng.terrier.prepareIndex(soDir, "txt", "es", false, false);
+			cng.terrier.prepareIndex(soDir, "txt", lang, false, false);
 			System.out.println("Done!");
 		}
-		
-		cng.terrier.loadIndex("<path-to-your-terrier-3.5>/var/index/pan11-expta/", "es");
+		cng.terrier.loadIndex("<path-to-your-terrier-3.5>/var/index/pan11-expta/", indexPrefix, lang);
 		
 		System.out.println(cng.terrier.getDimension());
 
-		String lang = "es";
+		
 
 		Preprocess pre = new Preprocess(lang);
 		
@@ -107,7 +112,7 @@ public class CLCNGExptA {
 
 		String query = this.terrier.tokenizeTerrier(text);
 		try {
-			ResultSet rs = this.terrier.getResultSet(query, "Hiemstra_LM", "false", "en", false, false);
+			ResultSet rs = this.terrier.getResultSet(query, "Hiemstra_LM", false, 0);
 			Map<Integer, Double> scoreMap = new HashMap<Integer, Double>();
 			
 			int[] docid = rs.getDocids();

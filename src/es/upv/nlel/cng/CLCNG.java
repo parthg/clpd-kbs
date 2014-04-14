@@ -66,7 +66,7 @@ public class CLCNG {
 		if(!new File("/home/parth/workspace/terrier-3.5/var/index/pan11/es.docid.map").exists())
 			cng.terrier.prepareIndex("/home/parth/workspace/data/clpd-kbs/soPara/", "txt", "es", false, false);
 		
-		cng.terrier.loadIndex("/home/parth/workspace/terrier-3.5/var/index/pan11/", "es");
+		cng.terrier.loadIndex("/home/parth/workspace/terrier-3.5/var/index/pan11/", "es", "es");
 		
 		System.out.println(cng.terrier.getDimension());
 		
@@ -175,7 +175,7 @@ public class CLCNG {
 		for(String su: suList) {
 			String query = this.terrier.getQuery(new File(su));
 			
-			ResultSet rs = this.terrier.getResultSet(query, "Hiemstra_LM", "false", "en", false, false);
+			ResultSet rs = this.terrier.getResultSet(query, "Hiemstra_LM", false, 0);
 			Map<Integer, Double> scoreMap = new HashMap<Integer, Double>();
 			
 			/*String[] q = query.split(" ");
