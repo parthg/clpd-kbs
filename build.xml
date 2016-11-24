@@ -18,7 +18,7 @@
   <target name="compile" depends="init"
         description="compile the source " >
     <!-- Compile the java code from ${src} into ${build} -->
-    <javac srcdir="${src}" destdir="${bin}" classpath="lib/antlr.jar:lib/terrier-3.5-core.jar:lib/trove-3.0.1.jar:lib/icu4j-4_6.jar:lib/nlel-20130326.jar:lib/Nemo-20140409.jar"/>
+    <javac srcdir="${src}" destdir="${bin}" classpath="lib/antlr.jar:lib/terrier-3.5-core.jar:lib/trove-3.0.1.jar:lib/icu4j-4_6.jar:lib/nlel-20130326.jar:lib/Nemo-20140414.jar"/>
   </target>
 
   <target name="dist" depends="compile"
